@@ -1,42 +1,42 @@
 version: "3.8"
 services:
-	mariadb_service:
-		image: mariadb:10.5.3
-		ports:
-			- "3306:3306"
-		networks:
-			- first-backend
-		volumes:
-			- mariadb-volume:/var/lib/mysql/data
-		environment:
-			- MYSQL_ROOT_PASSWORD=mypass
-		deploy:
-			replicas: 1
-			restart_policy:
-				condition: on-failure
-	java_service:
-		image: pradeepdocks/java-app:latest
-		ports:
-			- "8081:8081"
-		networks:
-			- first-backend
-			- first-frontend
-		deploy:
-			replicas: 2
-			restart_policy:
-				condition: on-failure
-	frontend_service:
-		image: pradeepdocks/react-app:latest
-		ports:
-			- "80:80"
-		networks:
-			- first-frontend
-		deploy:
-			replicas: 2
-			restart_policy:
-				condition: on-failure
+    mariadb_service:
+        image: mariadb:10.5.3
+        ports:
+            - "3306:3306"
+        networks:
+            - first-backend
+        volumes:
+            - mariadb-volume:/var/lib/mysql/data
+        environment:
+            - MYSQL_ROOT_PASSWORD=mypass
+        deploy:
+            replicas: 1
+            restart_policy:
+                condition: on-failure
+    java_service:
+        image: pradeepdocks/java-app:latest
+        ports:
+            - "8081:8081"
+        networks:
+            - first-backend
+            - first-frontend
+        deploy:
+            replicas: 2
+            restart_policy:
+                condition: on-failure
+    frontend_service:
+        image: pradeepdocks/react-app:latest
+        ports:
+            - "80:80"
+        networks:
+            - first-frontend
+        deploy:
+            replicas: 2
+            restart_policy:
+                condition: on-failure
 networks:
-	first-backend:
-	first-frontend:
+    first-backend:
+    first-frontend:
 volumes:
-	mariadb-volume:
+    mariadb-volume:
