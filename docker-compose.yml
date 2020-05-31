@@ -20,9 +20,9 @@ services:
             - "8081:8081"
         networks:
             - first-backend
-			- first-frontend
-		depends_on:
-			- mariadb_service
+            - first-frontend
+        depends_on:
+            - mariadb_service
         deploy:
             replicas: 2
             restart_policy:
@@ -32,10 +32,10 @@ services:
         ports:
             - "80:80"
         networks:
-			- first-frontend
-		depends_on:
-			- mariadb_service
-			- java_service
+            - first-frontend
+        depends_on:
+            - mariadb_service
+            - java_service
         deploy:
             replicas: 2
             restart_policy:
